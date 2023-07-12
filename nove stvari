@@ -1,0 +1,116 @@
+Nove stvari naucene u ovom projektu:
+
+1. Stampanje string literala u vise redova: 
+
+Console.WriteLine(@$"What game would you like to play today? Choose from the options below: 
+        A - Addition
+        S - Subtraction
+        M - Multiplication
+        D - Divison    
+        Q - Quit the program
+        ");
+------------------------------------------------------------------------------------------------------   
+
+2. Izlazak, odnosno prekid rada konzole na zahtev korisnika:
+
+    Environment.Exit(1); // Prekida rad programa i salje exit code(1) sto znaci da je korisnik sam izabrao da ugasi program
+
+------------------------------------------------------------------------------------------------------   
+  
+3. Refaktorisanje znaci promena koda tako da se ne utice na sam rad programa, odnosno program radi isto kao i ranije. 
+
+------------------------------------------------------------------------------------------------------   
+
+4.  Console.Clear() // brise sve sa prozora konzole
+
+------------------------------------------------------------------------------------------------------
+
+5. Helper klase su klase koje sadrze metode koje se ponavljaju na vise razlicitih mesta u kodu.
+
+------------------------------------------------------------------------------------------------------
+
+6. MVC - Model View Controller
+
+        Model => klasa koja predstavlja "oblik" podataka
+        View => korisnicki interfejs
+        Controller => klasa koja omogucava komunikaciju izmedju view i model klase.
+        
+------------------------------------------------------------------------------------------------------
+
+7.  Proverava da li je uneta null vrednost ili vrednost koja ne moze da se konvertuje u integer, _ stoji tu jer ne moramo da sacuvamo rezultat rada TryParse() metode tako da ona menja promenljivu.
+                
+                while(string.IsNullOrEmpty(result) || !Int32.TryParse(result, out _))
+                {
+                    Console.WriteLine("Your input must ne an integer. Try again.");
+                    result = Console.ReadLine();
+                }
+
+------------------------------------------------------------------------------------------------------
+
+8. Deo koda koji racuna koliko je potrebno igracu da zavrsi jednu igru:
+
+To track how much time the user spent while finishing a game in C#, you can use the Stopwatch class from the System.Diagnostics namespace. 
+The Stopwatch class provides high-resolution timing functionality. 
+
+Here's an example of how you can use it:
+
+
+using System;
+using System.Diagnostics;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Welcome to the game!");
+        Console.WriteLine("Press Enter to start the game.");
+        Console.ReadLine();
+
+        // Create and start the stopwatch
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
+        // Your game logic goes here...
+        PlayGame();
+
+        // Stop the stopwatch
+        stopwatch.Stop();
+
+        // Calculate and display the elapsed time
+        TimeSpan elapsedTime = stopwatch.Elapsed;
+        Console.WriteLine("Congratulations! You finished the game in: " + elapsedTime);
+
+        Console.WriteLine("Press Enter to exit.");
+        Console.ReadLine();
+    }
+
+    static void PlayGame()
+    {
+        // Game logic goes here...
+        Console.WriteLine("Playing the game...");
+        // Simulate some time delay
+        System.Threading.Thread.Sleep(3000);
+    }
+}
+
+
+Objasnjenje: 
+
+In this example, when the user presses Enter to start the game, the stopwatch is started using Stopwatch.StartNew(). 
+Then, your game logic is executed inside the PlayGame method. After the game is finished, the stopwatch is stopped using Stopwatch.Stop(). 
+The elapsed time is calculated using the Elapsed property of the Stopwatch class, which returns a TimeSpan object representing the elapsed time.
+
+Finally, the elapsed time is displayed to the user. You can format the output according to your preference by accessing individual properties of the TimeSpan object, such as TotalSeconds, TotalMinutes, or TotalHours.
+
+Remember to add the necessary using directive at the top of your file:
+using System.Diagnostics;
+
+This example assumes a simple game structure, and you can incorporate the timing functionality into your specific game logic.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9.  In C#, the TimeSpan struct is used to represent a duration of time or a time interval. It allows you to perform various operations on time values, such as addition, subtraction, comparison, and formatting.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+10. Ne koristi regularne izraze za switch petlju.
